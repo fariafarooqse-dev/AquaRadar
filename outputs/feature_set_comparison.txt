@@ -1,0 +1,65 @@
+FEATURE-SET COMPARISON (grouped cross-validation; group-bootstrap intervals)
+rows: 964   coarse groups: 49   fold repeats: 5 (repeat 0 = manifest folds)   bootstrap draws: 1000
+sets: ['f1', 'f1_bands_only', 'f1_scalars_only', 'f1_temporal', 'f1_mfcc', 'f1_mfcc_delta']
+classifier: audio_rf settings from train_model.make_models (300 trees, class_weight=balanced, seed 42)
+intervals shown: 95% group-bootstrap. Decision uses 98.3% (Bonferroni over 3 candidate(s)).
+
+== PRIMARY scheme: absolute metrics (mean over repeats; [95% CI]) ==
+            set  n_feat              bal_acc          leak_recall leak_prec              fpr_all fpr_no_leak fpr_noise noise_recall bal_acc_range_over_repeats
+             f1      39 0.791 [0.698, 0.866] 0.918 [0.850, 0.955]     0.886 0.125 [0.071, 0.177]       0.113     0.163        0.636                0.787-0.795
+  f1_bands_only      32 0.765 [0.674, 0.840] 0.883 [0.843, 0.908]     0.840 0.179 [0.122, 0.228]       0.176     0.188        0.634                0.758-0.771
+f1_scalars_only       7 0.751 [0.657, 0.824] 0.893 [0.755, 0.939]     0.875 0.135 [0.081, 0.199]       0.133     0.143        0.595                0.739-0.763
+    f1_temporal      46 0.805 [0.718, 0.879] 0.923 [0.868, 0.952]     0.892 0.118 [0.068, 0.170]       0.104     0.163        0.657                0.801-0.813
+        f1_mfcc      63 0.797 [0.705, 0.869] 0.924 [0.859, 0.954]     0.884 0.129 [0.081, 0.178]       0.115     0.175        0.645                0.793-0.801
+  f1_mfcc_delta      75 0.803 [0.713, 0.872] 0.940 [0.897, 0.958]     0.880 0.136 [0.087, 0.190]       0.121     0.184        0.652                0.797-0.809
+
+== PRIMARY scheme: change from f1 (paired; [95% CI]; last column = lower end of the 98.3% interval used for the decision) ==
+            set               d_bal_acc          d_leak_recall              d_fpr_all         d_noise_recall d_bal_acc_lo_adj
+  f1_bands_only -0.026 [-0.046, -0.008] -0.035 [-0.063, 0.001]   0.053 [0.011, 0.083] -0.002 [-0.057, 0.032]           -0.056
+f1_scalars_only  -0.040 [-0.078, 0.000] -0.025 [-0.116, 0.006]  0.010 [-0.028, 0.061] -0.041 [-0.091, 0.063]           -0.092
+    f1_temporal    0.014 [0.002, 0.035]  0.004 [-0.014, 0.026] -0.007 [-0.022, 0.008]  0.021 [-0.003, 0.082]           +0.000
+        f1_mfcc   0.006 [-0.012, 0.021]  0.006 [-0.019, 0.035]  0.004 [-0.010, 0.023]  0.009 [-0.027, 0.038]           -0.015
+  f1_mfcc_delta   0.012 [-0.007, 0.030]  0.022 [-0.003, 0.056]  0.011 [-0.005, 0.038]  0.016 [-0.025, 0.053]           -0.011
+
+== SENSITIVITY scheme: absolute metrics (mean over repeats; [95% CI]) ==
+            set  n_feat              bal_acc          leak_recall leak_prec              fpr_all fpr_no_leak fpr_noise noise_recall bal_acc_range_over_repeats
+             f1      39 0.804 [0.712, 0.880] 0.957 [0.915, 0.971]     0.891 0.124 [0.080, 0.175]       0.107     0.179        0.623                0.794-0.811
+  f1_bands_only      32 0.781 [0.689, 0.856] 0.948 [0.903, 0.963]     0.835 0.199 [0.139, 0.260]       0.175     0.277        0.618                0.778-0.784
+f1_scalars_only       7 0.758 [0.657, 0.842] 0.921 [0.824, 0.954]     0.880 0.134 [0.078, 0.211]       0.127     0.155        0.580                0.744-0.770
+    f1_temporal      46 0.816 [0.729, 0.889] 0.952 [0.901, 0.967]     0.896 0.118 [0.067, 0.179]       0.096     0.186        0.646                0.806-0.823
+        f1_mfcc      63 0.814 [0.723, 0.886] 0.963 [0.917, 0.981]     0.889 0.127 [0.081, 0.188]       0.104     0.200        0.639                0.808-0.824
+  f1_mfcc_delta      75 0.816 [0.728, 0.884] 0.963 [0.919, 0.981]     0.888 0.128 [0.085, 0.187]       0.108     0.193        0.648                0.804-0.826
+
+== SENSITIVITY scheme: change from f1 (paired; [95% CI]; last column = lower end of the 98.3% interval used for the decision) ==
+            set               d_bal_acc           d_leak_recall              d_fpr_all         d_noise_recall d_bal_acc_lo_adj
+  f1_bands_only -0.022 [-0.037, -0.008] -0.009 [-0.019, -0.002]   0.075 [0.041, 0.108] -0.005 [-0.046, 0.018]           -0.041
+f1_scalars_only -0.045 [-0.086, -0.006] -0.036 [-0.099, -0.013]  0.009 [-0.029, 0.067] -0.043 [-0.118, 0.064]           -0.099
+    f1_temporal    0.013 [0.001, 0.032] -0.005 [-0.017, -0.001] -0.007 [-0.022, 0.012]   0.023 [0.000, 0.077]           -0.000
+        f1_mfcc   0.010 [-0.005, 0.023]   0.006 [-0.006, 0.016]  0.003 [-0.010, 0.022]  0.016 [-0.029, 0.050]           -0.010
+  f1_mfcc_delta   0.012 [-0.007, 0.028]   0.006 [-0.004, 0.017]  0.004 [-0.015, 0.031]  0.025 [-0.024, 0.070]           -0.012
+
+== Repeat 0 only (manifest folds): pooled balanced accuracy, for checking against the baseline report ==
+                 primary  sensitivity
+f1                 0.787        0.807
+f1_bands_only      0.771        0.783
+f1_scalars_only    0.739        0.769
+f1_temporal        0.805        0.818
+f1_mfcc            0.801        0.812
+f1_mfcc_delta      0.809        0.817
+(f1 / primary here should equal audio_rf pooled_bal_acc in outputs/baseline_cv_report.txt)
+
+== DECISION (rule fixed before results; see the top of scripts/evaluate_feature_sets.py) ==
+f1_temporal: does not pass
+    - sensitivity: adjusted lower bound of balanced-accuracy gain is -0.000 (needs > 0)
+    - sensitivity: leak recall changes by -0.005 (must not fall)
+f1_mfcc: does not pass
+    - primary: adjusted lower bound of balanced-accuracy gain is -0.015 (needs > 0)
+    - sensitivity: adjusted lower bound of balanced-accuracy gain is -0.010 (needs > 0)
+f1_mfcc_delta: does not pass
+    - primary: adjusted lower bound of balanced-accuracy gain is -0.011 (needs > 0)
+    - primary: leak false-positive rate rises by +0.011 (limit +0.01)
+    - sensitivity: adjusted lower bound of balanced-accuracy gain is -0.012 (needs > 0)
+
+KEEP f1. No candidate met the pre-declared rule. This is a valid result.
+
+LIMITS: about 49 coarse groups from one dataset; groups are inferred from filenames; a pass means 'separated from f1 on this dataset', not field accuracy. Several sets were compared on the same data, hence the Bonferroni adjustment. Nothing here measures performance on new sites or phone recordings.

@@ -1,0 +1,14 @@
+audio_rf out-of-fold (primary folds) pooled balanced accuracy: 0.787
+
+== ABSTENTION TABLE (abstain when top class score < threshold; RF scores are NOT calibrated probabilities) ==
+leak_silent_miss = true leak, kept, predicted not-leak.  leak_abstained = true leak sent to 'uncertain'.
+ threshold  coverage  acc_on_kept  leak_silent_miss  leak_abstained  no_leak_false_alarm  noise_abstained
+       0.0     1.000        0.844             0.085           0.000                0.112            0.000
+       0.5     0.932        0.878             0.056           0.046                0.096            0.125
+       0.6     0.815        0.917             0.036           0.141                0.056            0.304
+       0.7     0.704        0.935             0.026           0.260                0.045            0.411
+       0.8     0.497        0.944             0.014           0.486                0.034            0.616
+       0.9     0.253        0.926             0.008           0.776                0.025            0.750
+
+saved C:\Users\DELL\Downloads\AquaRadar_Starter\models\leak_model_v1.joblib (4.06 MB) and C:\Users\DELL\Downloads\AquaRadar_Starter\models\leak_model_v1_card.json
+reload + predict check OK

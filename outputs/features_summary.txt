@@ -1,0 +1,21 @@
+feature version: f1   n_features: 39
+eval rows: 964   extracted: 964   failed: 0
+X shape: (964, 39)   NaN/inf: 0
+constant features (std < 1e-9): []
+rows per label x fold_primary:
+label         leak  no_leak  noise
+fold_primary                      
+0              140       70     22
+1              127       71     21
+2               76       72     22
+3               76       71     22
+4               77       72     25
+
+per-label mean of a few features (descriptive only, NOT evidence of separability):
+         spectral_centroid_hz  spectral_flatness  zero_crossing_rate  frame_rms_cv
+label                                                                             
+leak                  590.065              0.081               0.124         0.113
+no_leak               545.048              0.124               0.131         0.156
+noise                 888.954              0.186               0.179         0.286
+
+saved C:\Users\DELL\Downloads\AquaRadar_Starter\data\processed\features_f1.npz  (reload check OK: ['X', 'feature_names', 'feature_version', 'fold_primary', 'fold_sensitivity', 'paths', 'y'])

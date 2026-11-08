@@ -1,0 +1,90 @@
+samples: 964   classes: {'leak': np.int64(496), 'no_leak': np.int64(356), 'noise': np.int64(112)}
+audio feature matrix: (964, 39)   metadata matrix: (964, 8)
+
+== SUMMARY (per-fold mean/sd/min/max of balanced accuracy; pooled = all out-of-fold predictions) ==
+chance balanced accuracy for 3 classes = 0.333
+     scheme          model  bal_acc_mean  bal_acc_sd  bal_acc_min  bal_acc_max  macro_f1_mean  pooled_bal_acc  leak_missed  no_leak_flagged_leak
+    primary dummy_majority         0.333       0.000        0.333        0.333          0.223           0.333        0.000                 1.000
+    primary  metadata_only         0.410       0.133        0.258        0.653          0.334           0.409        0.982                 0.666
+    primary   audio_logreg         0.739       0.112        0.554        0.898          0.706           0.736        0.280                 0.149
+    primary       audio_rf         0.782       0.076        0.682        0.887          0.780           0.787        0.085                 0.112
+sensitivity dummy_majority         0.333       0.000        0.333        0.333          0.226           0.333        0.000                 1.000
+sensitivity  metadata_only         0.639       0.074        0.537        0.762          0.599           0.639        0.369                 0.618
+sensitivity   audio_logreg         0.788       0.092        0.654        0.867          0.778           0.789        0.151                 0.132
+sensitivity       audio_rf         0.805       0.078        0.673        0.876          0.812           0.807        0.048                 0.098
+
+leak_missed = share of true leak clips NOT predicted leak.  no_leak_flagged_leak = share of true no_leak clips predicted leak.
+
+== PRIMARY scheme, audio_logreg: per fold ==
+ fold  n_test  bal_acc  macro_f1  recall_leak  recall_no_leak  recall_noise
+    0     232    0.554     0.559        0.764           0.671         0.227
+    1     219    0.763     0.644        0.543           0.746         1.000
+    2     170    0.778     0.738        0.737           0.778         0.818
+    3     169    0.703     0.721        0.816           0.746         0.545
+    4     174    0.898     0.867        0.818           0.875         1.000
+-- pooled out-of-fold report (audio_logreg) --
+              precision    recall  f1-score   support
+
+        leak      0.834     0.720     0.773       496
+     no_leak      0.697     0.764     0.729       356
+       noise      0.555     0.723     0.628       112
+
+    accuracy                          0.737       964
+   macro avg      0.695     0.736     0.710       964
+weighted avg      0.751     0.737     0.740       964
+
+confusion matrix (rows = true, cols = predicted; order: leak, no_leak, noise)
+         leak  no_leak  noise
+leak      357      105     34
+no_leak    53      272     31
+noise      18       13     81
+
+== PRIMARY scheme, audio_rf: per fold ==
+ fold  n_test  bal_acc  macro_f1  recall_leak  recall_no_leak  recall_noise
+    0     232    0.709     0.725        0.971           0.929         0.227
+    1     219    0.814     0.781        0.913           0.718         0.810
+    2     170    0.818     0.822        0.803           0.833         0.818
+    3     169    0.682     0.713        0.921           0.761         0.364
+    4     174    0.887     0.858        0.922           0.819         0.920
+-- pooled out-of-fold report (audio_rf) --
+              precision    recall  f1-score   support
+
+        leak      0.888     0.915     0.902       496
+     no_leak      0.816     0.812     0.814       356
+       noise      0.717     0.634     0.673       112
+
+    accuracy                          0.844       964
+   macro avg      0.807     0.787     0.796       964
+weighted avg      0.842     0.844     0.843       964
+
+confusion matrix (rows = true, cols = predicted; order: leak, no_leak, noise)
+         leak  no_leak  noise
+leak      454       41      1
+no_leak    40      289     27
+noise      17       24     71
+
+== PRIMARY scheme, metadata_only: per fold ==
+ fold  n_test  bal_acc  macro_f1  recall_leak  recall_no_leak  recall_noise
+    0     232    0.258     0.291        0.000           0.000         0.773
+    1     219    0.423     0.318        0.000           0.268         1.000
+    2     170    0.333     0.282        0.000           0.000         1.000
+    3     169    0.382     0.296        0.118           0.028         1.000
+    4     174    0.653     0.483        0.000           0.958         1.000
+-- pooled out-of-fold report (metadata_only) --
+              precision    recall  f1-score   support
+
+        leak      0.037     0.018     0.024       496
+     no_leak      0.160     0.253     0.196       356
+       noise      0.682     0.955     0.796       112
+
+    accuracy                          0.214       964
+   macro avg      0.293     0.409     0.339       964
+weighted avg      0.157     0.214     0.177       964
+
+confusion matrix (rows = true, cols = predicted; order: leak, no_leak, noise)
+         leak  no_leak  noise
+leak        9      466     21
+no_leak   237       90     29
+noise       0        5    107
+
+CAVEATS: single-site dataset; 16 leak / 18 no_leak / 15 noise groups in primary folds; noise folds test unseen sound categories; numbers are NOT field-reliability estimates.

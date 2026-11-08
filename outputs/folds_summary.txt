@@ -1,0 +1,71 @@
+rows: 1000   eval rows (duplicates removed): 964   extras dropped: 36
+eval rows per label:
+label
+leak       496
+no_leak    356
+noise      112
+
+== groups, PRIMARY (coarse) ==
+         count  min  median  max
+label                           
+leak        16    2     7.5  140
+no_leak     18    1    10.0   66
+noise       15    2     3.0   25
+conflicting-label groups: 0
+
+== groups, SENSITIVITY (fine) ==
+         count  min  median  max
+label                           
+leak       271    1     2.0    9
+no_leak     18    1    10.0   66
+noise       15    2     3.0   25
+conflicting-label groups: 0
+
+== eval rows per fold x label, PRIMARY ==
+label         leak  no_leak  noise
+fold_primary                      
+0              140       70     22
+1              127       71     21
+2               76       72     22
+3               76       71     22
+4               77       72     25
+every fold contains all 3 classes
+
+== eval rows per fold x label, SENSITIVITY ==
+label             leak  no_leak  noise
+fold_sensitivity                      
+0                  100       71     21
+1                   99       72     22
+2                   99       72     22
+3                   99       70     25
+4                   99       71     22
+every fold contains all 3 classes
+
+== noise categories per PRIMARY fold ==
+  fold 0: hydrant(9), grass noise(5), alarm(3), gas pipe(3), music(2)
+  fold 1: rain(11), fan motor(4), drum(3), flowing water(3)
+  fold 2: engine(13), fan(3), unknown(3), wind(3)
+  fold 3: dog(22)
+  fold 4: drilling(25)
+
+== material x fold (PRIMARY, leak/no_leak eval rows) ==
+label        leak                             no_leak                           
+material       NA ductile iron   pe pvc steel      NA ductile iron  pe pvc steel
+fold_primary                                                                    
+0               0          140    0   0     0       0           40  28   0     2
+1               0            0  127   0     0      12           40  19   0     0
+2               2           50   20   0     4       6           66   0   0     0
+3               0           24   44   0     8       2            0  61   0     8
+4               4           66    0   7     0       0           18  51   3     0
+
+--- AUDIT for PRIMARY (fold_primary) ---
+rows without fold: 0
+  group_primary      values appearing in >1 fold: 0   PASS
+  group_sensitivity  values appearing in >1 fold: 0   PASS
+  md5                values appearing in >1 fold: 0   PASS
+
+--- AUDIT for SENSITIVITY (group_primary overlap is EXPECTED to FAIL here) (fold_sensitivity) ---
+rows without fold: 0
+  group_primary      values appearing in >1 fold: 13   FAIL
+  group_sensitivity  values appearing in >1 fold: 0   PASS
+  md5                values appearing in >1 fold: 0   PASS

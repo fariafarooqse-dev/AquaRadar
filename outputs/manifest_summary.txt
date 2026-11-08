@@ -1,0 +1,91 @@
+FILES: 1000   (manifest: C:\Users\DELL\Downloads\AquaRadar_Starter\data\processed\manifest_draft.csv)
+
+== label counts (from top-level folder) ==
+label
+leak       500
+no_leak    386
+noise      114
+
+== filename parse failures: 0 ==
+
+== CONFOUND CHECK: label x device ==
+device   NA  hydrophone  noise logger
+label                                
+leak      2         107           391
+no_leak   0         107           279
+noise     0           0           114
+
+== label x material (leak / no_leak only) ==
+material  NA  ductile iron   pe  pvc  steel
+label                                      
+leak       6           281  194    7     12
+no_leak   20           178  175    3     10
+
+== label x zone ==
+zone      NA  zone 1  zone 2
+label                       
+leak     348      38     114
+no_leak  207      28     151
+noise    109       0       5
+
+== label x device x material (leak / no_leak only) ==
+material              NA  ductile iron   pe  pvc  steel
+label   device                                         
+leak    NA             0             2    0    0      0
+        hydrophone     2            76   25    0      4
+        noise logger   4           203  169    7      8
+no_leak hydrophone     8            49   48    0      2
+        noise logger  12           129  127    3      8
+
+== missing pressure/flow (NA) per label ==
+         pressure_mpa  flow
+label                      
+leak               31    74
+no_leak           386   386
+
+== noise categories ==
+noise_category
+drilling         25
+dog              22
+engine           13
+hydrant          11
+rain             11
+grass noise       5
+fan motor         4
+alarm             3
+drum              3
+fan               3
+flowing water     3
+gas pipe          3
+unknown           3
+wind              3
+music             2
+
+== GROUPS (hypothesis: same recording_key or identical bytes = same group) ==
+groups: 304   groups spanning >1 label: 0
+groups per label:
+label
+leak       271
+no_leak     18
+noise       15
+group size per label (min / median / max):
+         min  median  max
+label                    
+leak       1     2.0    9
+no_leak    1    10.0   74
+noise      2     3.0   25
+largest groups share of its label's files:
+  leak: top-3 group sizes [9, 7, 6] of 500 files
+  no_leak: top-3 group sizes [74, 74, 51] of 386 files
+  noise: top-3 group sizes [25, 22, 13] of 114 files
+
+== DUPLICATE AUDIO ==
+files in byte-identical groups: 72 in 36 groups
+duplicate groups whose filenames describe DIFFERENT recordings (metadata conflict): 4
+
+== segment tokens (a-b) ==
+0-1    650
+2-3    101
+4-5     88
+3-4     82
+1-2     79

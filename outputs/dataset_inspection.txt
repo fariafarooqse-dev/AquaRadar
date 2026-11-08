@@ -1,0 +1,85 @@
+DATASET ROOT: C:\Users\DELL\Downloads\AquaRadar_Starter\data\raw\zenodo_leak_audio
+Total files: 1001
+Python soundfile available: True
+
+== 1. FILE EXTENSIONS ==
+  .wav       1000
+  .ini       1
+
+Audio files found: 1000
+
+== 2. DOCUMENTATION, LICENCE & METADATA FILES ==
+  NONE FOUND -> licence/labels/recording conditions are UNDOCUMENTED in this folder.
+
+== 3. AUDIO HEADERS ==
+Readable: 1000   Unreadable/corrupt: 0
+Sample rates : {8000: 1000}
+Channels     : {1: 1000}
+Subtypes     : {'PCM_16': 1000}
+Duration (s) : min=1.00 median=1.00 mean=1.00 max=1.00
+Zero-length  : 0
+Total hours  : 0.28
+
+== 4. CANDIDATE LABEL SOURCES (UNCONFIRMED - verify against dataset docs) ==
+4a. Files per immediate parent folder:
+  environmental noise\environmental noise            n=   114  dur(s): min=1.00 median=1.00 mean=1.00 max=1.00
+  leak acoustic data\leak acoustic data              n=   500  dur(s): min=1.00 median=1.00 mean=1.00 max=1.00
+  no leak acoustic data\no leak acoustic data        n=   386  dur(s): min=1.00 median=1.00 mean=1.00 max=1.00
+4b. Files per first filename token (split on _ - space):
+  ductile                        459
+  pe                             369
+  NA                             26
+  drilling                       25
+  dog                            22
+  steel                          22
+  engine                         13
+  hydrant                        11
+  rain                           11
+  pvc                            10
+  fan                            7
+  grass                          5
+  alarm                          3
+  drum                           3
+  flowing                        3
+  gas                            3
+  unknown                        3
+  wind                           3
+  music                          2
+
+== 5. LEAKAGE RISK CHECKS ==
+5a. Byte-identical duplicate groups: 36 (files involved: 72)
+   environmental noise\environmental noise\hydrant-NA-noise logger_1-2.wav == environmental noise\environmental noise\hydrant_normal-NA-noise logger_1-2.wav
+   environmental noise\environmental noise\hydrant-NA-noise logger_2-3.wav == environmental noise\environmental noise\hydrant_normal-NA-noise logger_2-3.wav
+   leak acoustic data\leak acoustic data\ductile iron-NA-0.1545 MPa-3.36 ms-noise logger-0-1_1.wav == leak acoustic data\leak acoustic data\ductile iron-NA-0.1630 MPa-3.45 ms-noise logger-0-1.wav
+   leak acoustic data\leak acoustic data\ductile iron-zone 2-0.312 MPa-0.9 ms-hydrophone-0-1_1.wav == leak acoustic data\leak acoustic data\pe-zone 2-0.305 MPa-1.6 ms-noise logger-0-1.wav
+   leak acoustic data\leak acoustic data\pe-NA-0.1545 MPa-3.36 ms-noise logger-0-1_3.wav == leak acoustic data\leak acoustic data\pe-NA-0.1630 MPa-3.45 ms-noise logger-0-1.wav
+   leak acoustic data\leak acoustic data\pe-NA-0.3110 MPa-0.5 ms-noise logger-0-1.wav == leak acoustic data\leak acoustic data\pe-NA-NA-NA-noise logger-0-1.wav
+   no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_0-1.wav == no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_0-1_1.wav
+   no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_4-5.wav == no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_4-5_1.wav
+   no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-noise logger_0-1_11.wav == no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-noise logger_0-1_7.wav
+   no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-noise logger_0-1_14.wav == no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-noise logger_0-1_16.wav
+    ...of which span different folders (possible cross-class duplicates): 0
+5b. Same filename in more than one folder: 0
+5c. Filename-stem groups (numeric suffix stripped): 319 groups for 1000 files; 217 groups contain >1 file. Largest groups (possible same source/session):
+   'ductile iron-NA-NA-NA-noise logger': 75 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'pe-NA-NA-NA-noise logger': 75 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'pe-zone 2-NA-NA-noise logger': 58 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'ductile iron-zone 2-NA-NA-noise logger': 52 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'pe-zone 2-NA-NA-hydrophone': 33 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'ductile iron-NA-NA-NA-hydrophone': 30 files, folders=['no leak acoustic data\\no leak acoustic data']
+   'ductile iron-zone 2-NA-NA-hydrophone': 21 files, folders=['leak acoustic data\\leak acoustic data', 'no leak acoustic data\\no leak acoustic data']
+   'pe-NA-NA-NA-hydrophone': 19 files, folders=['no leak acoustic data\\no leak acoustic data']
+   'ductile iron-zone 1-NA-NA-noise logger': 12 files, folders=['no leak acoustic data\\no leak acoustic data']
+   'NA-zone 2-NA-NA-noise logger': 8 files, folders=['no leak acoustic data\\no leak acoustic data']
+   NOTE: 5c is a filename heuristic only. Whether files share a source/session must be confirmed in the dataset documentation or metadata.
+
+== 6. EXAMPLE PATHS (first 3 audio files per folder) ==
+  environmental noise\environmental noise\alarm_1-NA-noise logger_0-1.wav
+  environmental noise\environmental noise\alarm_1-NA-noise logger_1-2.wav
+  environmental noise\environmental noise\alarm_1-NA-noise logger_4-5.wav
+  leak acoustic data\leak acoustic data\ductile iron-NA-0.0650 MPa-2.46 ms-noise logger-0-1.wav
+  leak acoustic data\leak acoustic data\ductile iron-NA-0.0650 MPa-2.46 ms-noise logger-0-1_1.wav
+  leak acoustic data\leak acoustic data\ductile iron-NA-0.0717 MPa-2.09 ms-noise logger-0-1.wav
+  no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_0-1.wav
+  no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_0-1_1.wav
+  no leak acoustic data\no leak acoustic data\ductile iron-NA-NA-NA-hydrophone_0-1_10.wav

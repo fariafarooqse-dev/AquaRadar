@@ -1,0 +1,28 @@
+{
+  "model_version": "leak_model_v1",
+  "created_utc": "2026-10-25T12:21:22+00:00",
+  "algorithm": "RandomForestClassifier(n_estimators=300, class_weight='balanced', random_state=42)",
+  "sklearn_version": "1.9.1",
+  "feature_version": "f1",
+  "n_features": 39,
+  "classes": [
+    "leak",
+    "no_leak",
+    "noise"
+  ],
+  "training_rows": {
+    "leak": 496,
+    "no_leak": 356,
+    "noise": 112
+  },
+  "training_data": "Wang, Q., Mei, Z., Zhan, F., & Chen, J. (2026). Acoustic data for the manuscript entitled 'Self-supervised acoustic leakage detection for water distribution systems: A real-time diagnosis framework under data scarcity' (v1). Zenodo. https://doi.org/10.5281/zenodo.18631450",
+  "training_data_licence": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/legalcode), as stated in the saved Zenodo record metadata. AquaRadar extracted audio features and trained a classifier; this is not endorsed by the dataset authors. See docs/dataset_documentation.md.",
+  "evaluation": "5-fold grouped CV (coarse groups), pooled out-of-fold balanced accuracy 0.787",
+  "limitations": [
+    "Single-site dataset; not validated on campus pipes.",
+    "Screening result only: resembles labelled training clips; not proof of a leak.",
+    "Noise class covers only the 15 sound categories in the dataset.",
+    "Expects 1.0 s clips; longer recordings need windowing (not implemented yet).",
+    "Scores are not calibrated probabilities."
+  ]
+}

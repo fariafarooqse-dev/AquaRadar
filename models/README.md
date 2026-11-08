@@ -1,0 +1,1 @@
+Place the small trained model artifact here only after Member 1 verifies the file size and dataset/model licensing. If the model is too large, use Git LFS or documented external storage. Never commit credentials.

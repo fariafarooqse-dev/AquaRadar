@@ -1,0 +1,144 @@
+# AquaRadar — Overall Project Workflow
+
+## 1. What is AquaRadar?
+
+AquaRadar is a prototype platform for AI-assisted screening of pipe-acoustic recordings and coordinating follow-up maintenance inspections.
+
+The goal is to help institutional facilities teams, such as university maintenance departments, review potentially suspicious pipe sounds and manage inspection alerts in one place.
+
+**Important limitation:** AquaRadar identifies sounds resembling patterns learned from labelled audio data. A prediction is not proof of a leak. The prototype does not promise exact leak localization, water-loss measurements, or validated real-world accuracy.
+
+## 2. Complete system workflow
+
+Audio recording → Input validation → Audio preprocessing → Feature extraction → Trained ML model → Result interpretation → User review → Optional maintenance alert → Database storage → Dashboard and reports → Inspection outcome.
+
+### Step 1: Audio upload
+The user uploads an audio recording and optionally enters a location label and inspection notes.
+
+The interface checks the file type and whether a file was provided.
+
+### Step 2: Input validation
+The system checks whether the recording can be read and whether it is suitable for analysis.
+
+Invalid, corrupted, empty, unsupported, or unsuitable recordings must produce a clear error or uncertainty message rather than a fake prediction.
+
+### Step 3: Audio preprocessing
+The audio-processing pipeline converts the recording into the format expected by the model. Any resampling, channel conversion, trimming, or normalization must match the training pipeline.
+
+### Step 4: Feature extraction
+The system extracts numerical features using the method selected and tested by Member 1. Training and inference must use the same feature definitions and ordering.
+
+A spectrogram may help users visualize sound, but it is not proof of a leak.
+
+### Step 5: Model inference
+The trained machine-learning model predicts among the classes actually supported by the chosen dataset.
+
+The model must not claim to recognize a class that was not represented adequately in training.
+
+### Step 6: Result interpretation
+The application displays the model result, any applicable quality warnings, and a plain-language explanation.
+
+The system must distinguish:
+- Completed analysis
+- Uncertain result
+- Analysis error
+
+Confidence scores must not be described as reliable probabilities unless their interpretation has been validated.
+
+### Step 7: User review and alert creation
+A user reviews the result and may create an inspection alert.
+
+A potential-leak prediction is a reason to investigate, not confirmation that a leak exists. An operator may also create a manual inspection alert.
+
+### Step 8: Database storage
+The system stores analysis records and alerts in SQLite.
+
+Records should include identifiers, timestamps, location labels, prediction details, model version where available, alert status, and relevant notes.
+
+### Step 9: Maintenance workflow
+Suggested alert statuses:
+- New
+- Under Review
+- Inspection Required
+- Resolved
+
+When resolved, preserve the inspection outcome:
+- Leak found and repaired
+- Leak not found
+- Inconclusive
+- False alarm
+
+### Step 10: Dashboard and reporting
+The dashboard summarizes stored analyses and alerts. Reports must use actual saved records. Any sample data used for a demonstration must be clearly marked as simulated.
+
+## 3. Main application components
+
+- `app.py`: Streamlit interface, navigation, user inputs, and result presentation.
+- `audio_features.py`: Audio validation and feature extraction.
+- `train_model.py`: Dataset preparation, model training, and evaluation.
+- `model_service.py`: Interface between the application and the trained model.
+- `database.py`: SQLite database initialization and data operations.
+- `tests/`: Automated checks.
+- `docs/`: Project requirements, workflow, integration contract, testing, and research.
+
+## 4. Team ownership
+
+### Member 1 — AI model, product logic, and integration
+Owns dataset inspection, feature extraction, model training, evaluation, model-service behavior, uncertainty handling, application decision logic, and final integration.
+
+### Member 2 — UI/UX and Streamlit interface
+Owns the dashboard, audio-upload experience, results presentation, illustrative pipeline map, alert-management interface, and report screens.
+
+Member 2 must use the documented model-service contract. She must not invent model predictions or independently change the model pipeline.
+
+### Member 3 — Marketing, research, and validation
+Owns competitor research, potential-customer research, branding, pitch preparation, business-model hypotheses, and documentation of findings.
+
+Research claims must have sources. Planned interviews or hypothetical customer interest must not be presented as completed research.
+
+## 5. How the interface and model communicate
+
+The interface sends the uploaded file bytes and filename to the model-service layer.
+
+The proposed function is:
+
+`analyze_audio_bytes(file_bytes, filename)`
+
+The service returns:
+- `status`
+- `predicted_class`
+- `confidence`
+- `model_version`
+- `message`
+- `warnings`
+
+The actual implementation must follow `docs/model_ui_contract.md`.
+
+If the model is unavailable, the interface must explain that it is not connected. It must not substitute a hardcoded prediction.
+
+## 6. Demonstration requirements
+
+The minimum useful prototype should demonstrate:
+
+1. Uploading a supported audio recording.
+2. Passing it through actual trained-model inference once integration is complete.
+3. Displaying the actual result and relevant warnings.
+4. Creating an alert for review.
+5. Saving the alert and changing its status.
+6. Displaying saved records in the dashboard.
+
+If any stage is simulated or incomplete, disclose that limitation during the demonstration.
+
+## 7. Development and collaboration rules
+
+- Keep `main` runnable.
+- Develop in separate branches and review changes before merging.
+- Agree on interfaces before connecting components.
+- Do not overwrite another member's work without coordination.
+- Test AI-generated code rather than assuming it works.
+- Never commit credentials, private recordings, or datasets with unclear redistribution rights.
+- Prefer a reliable end-to-end demonstration over unfinished advanced features.
+
+## 8. Definition of project completion
+
+The prototype is ready for demonstration when the team can explain its limitations, show the implemented workflow, distinguish actual model results from demo data, demonstrate alert management, and provide honest evaluation evidence for the model.
