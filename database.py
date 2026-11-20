@@ -24,6 +24,7 @@ DEFAULT_DB_PATH = Path("aquaradar.db")
 
 STATUSES = ["New", "Under Review", "Inspection Required", "Resolved"]
 OUTCOMES = ["Leak found and repaired", "Leak not found", "Inconclusive", "False alarm"]
+WATER_SOURCES = ["Municipal supply", "Tubewell / borehole", "Tanker", "Mixed / other"]
 
 
 @contextmanager
@@ -82,21 +83,40 @@ def initialize_database(db_path: str | Path = DEFAULT_DB_PATH) -> None:
             )
             """
         )
-        _ensure_columns(conn, "analyses", {"notes": "TEXT", "warnings": "TEXT"})
-        _ensure_columns(conn, "alerts", {"updated_at": "TEXT"})
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS buildings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                name TEXT NOT NULL,
+                address TEXT,
+                age_years INTEGER,
+                floors INTEGER,
+                water_source TEXT,
+                tank_location TEXT,
+                pump_location TEXT,
+                pipe_routes TEXT,
+                past_issues TEXT,
+                notes TEXT
+            )
+            """
+        )
+        _ensure_columns(conn, "analyses", {"notes": "TEXT", "warnings": "TEXT", "building_id": "INTEGER"})
+        _ensure_columns(conn, "alerts", {"updated_at": "TEXT", "building_id": "INTEGER"})
 
 
 def save_analysis(result: Any, filename: str, location_label: Optional[str] = None,
-                  notes: Optional[str] = None, db_path: str | Path = DEFAULT_DB_PATH) -> int:
+                  notes: Optional[str] = None, building_id: Optional[int] = None,
+                  db_path: str | Path = DEFAULT_DB_PATH) -> int:
     """Store a model-service result (any object with the AnalysisResult fields). Returns its id."""
     initialize_database(db_path)
     with get_connection(db_path) as conn:
         cur = conn.execute(
             "INSERT INTO analyses (filename, location_label, status, predicted_class, confidence, "
-            "model_version, message, notes, warnings) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "model_version, message, notes, warnings, building_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (filename, (location_label or "").strip() or None, result.status, result.predicted_class,
              result.confidence, result.model_version, result.message, (notes or "").strip() or None,
-             json.dumps(list(result.warnings))),
+             json.dumps(list(result.warnings)), building_id),
         )
         return int(cur.lastrowid)
 
@@ -111,12 +131,17 @@ def get_analysis(analysis_id: int, db_path: str | Path = DEFAULT_DB_PATH) -> Opt
 def list_analyses(limit: int = 100, db_path: str | Path = DEFAULT_DB_PATH) -> list[dict]:
     initialize_database(db_path)
     with get_connection(db_path) as conn:
-        rows = conn.execute("SELECT * FROM analyses ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
+        rows = conn.execute(
+            "SELECT an.*, b.name AS building_name FROM analyses an "
+            "LEFT JOIN buildings b ON b.id = an.building_id ORDER BY an.id DESC LIMIT ?",
+            (limit,),
+        ).fetchall()
     return [dict(r) for r in rows]
 
 
 def create_alert(location_label: str, reason: str, analysis_id: Optional[int] = None,
-                 notes: Optional[str] = None, db_path: str | Path = DEFAULT_DB_PATH) -> int:
+                 notes: Optional[str] = None, building_id: Optional[int] = None,
+                 db_path: str | Path = DEFAULT_DB_PATH) -> int:
     """Create an alert with status 'New'. Raises ValueError if the rules above are not met."""
     location_label = (location_label or "").strip()
     reason = (reason or "").strip()
@@ -127,16 +152,19 @@ def create_alert(location_label: str, reason: str, analysis_id: Optional[int] = 
     initialize_database(db_path)
     with get_connection(db_path) as conn:
         if analysis_id is not None:
-            row = conn.execute("SELECT status FROM analyses WHERE id = ?", (analysis_id,)).fetchone()
+            row = conn.execute("SELECT status, building_id FROM analyses WHERE id = ?",
+                               (analysis_id,)).fetchone()
             if row is None:
                 raise ValueError(f"Analysis {analysis_id} does not exist.")
             if row["status"] == "error":
                 raise ValueError("An alert cannot be created from a failed analysis. "
                                  "Create a manual alert instead.")
+            if building_id is None:
+                building_id = row["building_id"]  # inherit the building of the analysis
         cur = conn.execute(
-            "INSERT INTO alerts (analysis_id, location_label, reason, notes, updated_at) "
-            "VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)",
-            (analysis_id, location_label, reason, (notes or "").strip() or None),
+            "INSERT INTO alerts (analysis_id, location_label, reason, notes, building_id, updated_at) "
+            "VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)",
+            (analysis_id, location_label, reason, (notes or "").strip() or None, building_id),
         )
         return int(cur.lastrowid)
 
@@ -182,7 +210,9 @@ def list_alerts(status: Optional[str] = None, db_path: str | Path = DEFAULT_DB_P
     """Alerts joined with the linked analysis result (None fields for manual alerts)."""
     initialize_database(db_path)
     sql = ("SELECT a.*, an.status AS analysis_status, an.predicted_class, an.confidence, "
-           "an.model_version, an.filename FROM alerts a LEFT JOIN analyses an ON an.id = a.analysis_id")
+           "an.model_version, an.filename, b.name AS building_name FROM alerts a "
+           "LEFT JOIN analyses an ON an.id = a.analysis_id "
+           "LEFT JOIN buildings b ON b.id = a.building_id")
     args: tuple = ()
     if status:
         sql += " WHERE a.status = ?"
@@ -207,3 +237,61 @@ def summary_counts(db_path: str | Path = DEFAULT_DB_PATH) -> dict:
         "alerts_by_status": {s: by_alert.get(s, 0) for s in STATUSES},
         "alerts_open": sum(n for s, n in by_alert.items() if s != "Resolved"),
     }
+
+
+# ---------------------------------------------------------------------------------------------
+# Building profiles (a digital water-infrastructure record, no blueprints needed)
+# ---------------------------------------------------------------------------------------------
+def create_building(name: str, address: Optional[str] = None, age_years: Optional[int] = None,
+                    floors: Optional[int] = None, water_source: Optional[str] = None,
+                    tank_location: Optional[str] = None, pump_location: Optional[str] = None,
+                    pipe_routes: Optional[str] = None, past_issues: Optional[str] = None,
+                    notes: Optional[str] = None, db_path: str | Path = DEFAULT_DB_PATH) -> int:
+    """Create a building profile. Only the name is required; unknown fields stay empty."""
+    name = (name or "").strip()
+    if not name:
+        raise ValueError("A building name is required.")
+    if water_source is not None and water_source not in WATER_SOURCES:
+        raise ValueError(f"Unknown water source: {water_source!r}")
+
+    def clean(v: Optional[str]) -> Optional[str]:
+        return (v or "").strip() or None
+
+    initialize_database(db_path)
+    with get_connection(db_path) as conn:
+        cur = conn.execute(
+            "INSERT INTO buildings (name, address, age_years, floors, water_source, tank_location, "
+            "pump_location, pipe_routes, past_issues, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (name, clean(address), age_years, floors, water_source, clean(tank_location),
+             clean(pump_location), clean(pipe_routes), clean(past_issues), clean(notes)),
+        )
+        return int(cur.lastrowid)
+
+
+def list_buildings(db_path: str | Path = DEFAULT_DB_PATH) -> list[dict]:
+    initialize_database(db_path)
+    with get_connection(db_path) as conn:
+        rows = conn.execute("SELECT * FROM buildings ORDER BY name COLLATE NOCASE").fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_building(building_id: int, db_path: str | Path = DEFAULT_DB_PATH) -> Optional[dict]:
+    initialize_database(db_path)
+    with get_connection(db_path) as conn:
+        row = conn.execute("SELECT * FROM buildings WHERE id = ?", (building_id,)).fetchone()
+    return dict(row) if row else None
+
+
+def building_summary(db_path: str | Path = DEFAULT_DB_PATH) -> list[dict]:
+    """Per building: number of saved analyses and number of open (not resolved) alerts."""
+    initialize_database(db_path)
+    with get_connection(db_path) as conn:
+        rows = conn.execute(
+            "SELECT b.id, b.name, COUNT(DISTINCT an.id) AS analyses, "
+            "COUNT(DISTINCT CASE WHEN al.status != 'Resolved' THEN al.id END) AS open_alerts "
+            "FROM buildings b "
+            "LEFT JOIN analyses an ON an.building_id = b.id "
+            "LEFT JOIN alerts al ON al.building_id = b.id "
+            "GROUP BY b.id ORDER BY b.name COLLATE NOCASE"
+        ).fetchall()
+    return [dict(r) for r in rows]
