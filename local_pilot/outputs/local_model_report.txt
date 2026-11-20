@@ -1,0 +1,15 @@
+AquaRadar local model report  (2026-11-20)
+Files per class: leak=36, leak_high_nowater=19, noise=8, noleak_nohole=71, noleak_taped=36, silence=5
+
+Grouped 5-fold CV (a recording is never split between train and test):
+balanced accuracy (windows): 0.970 | file-level accuracy: 0.986 (143 files)
+Confusion matrix [rows true noleak,leak; cols predicted]: [[599, 8], [10, 206]]
+
+Leave one piezo point out:
+  hold out A: balanced accuracy 0.958 (276 windows)
+  hold out B: balanced accuracy 0.957 (288 windows)
+  hold out C: balanced accuracy 0.985 (259 windows)
+
+Hole open + high flow ('no water') windows predicted LEAK: 98% (114 windows).
+
+NOT proven: other pipes/buildings, leak size, long-term stability. Pilot data from one rig.

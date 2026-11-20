@@ -45,3 +45,5 @@ data/processed/*
 .ruff_cache/
 .coverage
 htmlcov/
+
+*.wav

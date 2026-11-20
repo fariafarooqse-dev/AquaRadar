@@ -59,3 +59,10 @@ Training uses public leak-audio datasets, which are not included in this reposit
 - Keep `main` runnable.
 - Use small commits with descriptive messages.
 - Never commit passwords, API keys, private data, virtual environments, or large datasets.
+
+## Models
+
+- **Purana model:** public dataset par train kiya gaya.
+- **Naya model (`local_pilot/`):** hamari apni rig ki recordings par train kiya gaya.
+
+Recordings (`.wav`) privacy aur size ki wajah se repo mein nahi hain. Sirf extracted features (`local_pilot/features.csv`), model aur report upload hain.

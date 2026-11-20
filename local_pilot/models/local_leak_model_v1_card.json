@@ -1,0 +1,53 @@
+{
+  "trained": "2026-11-20",
+  "classes": {
+    "0": "noleak",
+    "1": "leak"
+  },
+  "features": [
+    "band00",
+    "band01",
+    "band02",
+    "band03",
+    "band04",
+    "band05",
+    "band06",
+    "band07",
+    "band08",
+    "band09",
+    "band10",
+    "band11",
+    "band12",
+    "band13",
+    "band14",
+    "band15",
+    "band16",
+    "band17",
+    "band18",
+    "band19",
+    "band20",
+    "band21",
+    "band22",
+    "band23",
+    "rms_db",
+    "peak",
+    "crest",
+    "centroid",
+    "flatness",
+    "zcr",
+    "hf_ratio"
+  ],
+  "window_s": 5,
+  "trim_s": 1,
+  "model": "StandardScaler + LogisticRegression",
+  "cv": {
+    "bal_acc": 0.97,
+    "file_acc": 0.986,
+    "files": 143
+  },
+  "train_files": {
+    "leak": 36,
+    "noleak_nohole": 71,
+    "noleak_taped": 36
+  }
+}
