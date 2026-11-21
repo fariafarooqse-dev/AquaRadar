@@ -18,7 +18,7 @@ more distance machine noise.wav,dis machine noise,noise,unknown,unknown,machine,
 1.1A  low silence that no taped leak low 1A Mon wav.wav,point A low leak record,silence,low,A,quiet,mon,0,48000,2,34.42,0.02192,0.1146,6
 "1.2A,low silence,no tape leak,1A,Mon wav.wav",point A low leak record,silence,low,A,quiet,mon,0,48000,2,34.66,0.01137,0.1374,6
 2.1A low  machine noise no taped leak low 2A Mon wav.wav,point A low leak record,noise,low,A,machine,mon,0,48000,2,34.9,0.02318,0.1194,6
-"2.2A,low, machine noise,2A,no taped,leak,Mon wav.wav",point A low leak record,noise,low,A,machine,mon,0,48000,2,34.0,0.01169,0.3056,6
+"2.2A,low, machine noise,2A,no taped,leak,Mon wav.wav",point A low leak record,noise,low,A,machine,mon,0,48000,2,34,0.01169,0.3056,6
 3.1A low dis machine no taped leak low 3A Mon wav.wav,point A low leak record,unknown,low,A,machine,mon,0,48000,2,34.44,0.02299,0.1161,6
 4.1A low  walking all that no taped leak low 4A Mon wav.wav,point A low leak record,unknown,low,A,walk,mon,0,48000,2,34.5,0.02342,0.1103,6
 "4.2A,low,walking and all that,no taped leak  low,4A,Mon wav.wav",point A low leak record,unknown,low,A,walk,mon,0,48000,2,34.44,0.02192,0.3369,6
@@ -70,15 +70,15 @@ more distance machine noise.wav,dis machine noise,noise,unknown,unknown,machine,
 3.1A high dis machine no leak no hole 3A wav mon.wav,point a high recordings,unknown,high,A,machine,mon,0,48000,2,30.64,0.01393,0.1478,5
 3.2A  high dis machine no leak no hole A 3 wav mon .wav,point a high recordings,unknown,high,A,machine,mon,0,48000,2,30.76,0.01258,0.0974,5
 4.1A high walking all that no leak no hole high A 4.1 Mon wav .wav,point a high recordings,unknown,high,A,walk,mon,0,48000,2,34.6,0.01959,0.736,6
-4.2A walking all that no leak no hole A 4.2A high Mon wave .wav,point a high recordings,unknown,high,A,walk,mon,0,48000,2,34.56,0.03626,1.0,6
+4.2A walking all that no leak no hole A 4.2A high Mon wave .wav,point a high recordings,unknown,high,A,walk,mon,0,48000,2,34.56,0.03626,1,6
 1.1A of mediumin machine noise  no leak no hole A 01 wav Monday .wav,point a med recd,noise,med,A,machine,mon,0,48000,2,30.46,0.01955,0.7114,5
 1.2A medium  in machine medium no leak no hole A 01 wav mon.wav,point a med recd,unknown,med,A,machine,mon,0,48000,2,30.44,0.02391,0.8592,5
 2.1A med walking all that no leak no hole A 2.1 Mon wav walking .wav,point a med recd,unknown,med,A,walk,mon,0,48000,2,35.04,0.04971,0.7475,6
-2.2A med walking all that no leak no hole A 2.2 Mon wav medium walking .wav,point a med recd,unknown,med,A,walk,mon,0,48000,2,35.3,0.0541,1.0,6
+2.2A med walking all that no leak no hole A 2.2 Mon wav medium walking .wav,point a med recd,unknown,med,A,walk,mon,0,48000,2,35.3,0.0541,1,6
 3.1A med silence no leak no hole med 3A wav mon .wav,point a med recd,silence,med,A,quiet,mon,0,48000,2,35.9,0.00503,0.0805,6
 3.2A med silence no leak no hole med 3A  Mon wav .wav,point a med recd,silence,med,A,quiet,mon,0,48000,2,34.48,0.00472,0.0423,6
-4.1A med dis machine little talk in next door no leak no hole med  4A wav 4 mon.wav,point a med recd,unknown,med,A,machine,mon,0,48000,2,30.76,0.07482,1.0,5
-4.2 more dis machine  no leak no hole 4 wav mon medium.wav,point a med recd,unknown,med,unknown,machine,mon,0,48000,2,30.52,0.00951,0.1017,5
+4.1A med dis machine little talk in next door no leak no hole med  4A wav 4 mon.wav,point a med recd,unknown,med,A,machine,mon,0,48000,2,30.76,0.07482,1,5
+4.2 more dis machine  no leak no hole 4 wav mon medium.wav,point a med recd,unknown,med,A,machine,mon,0,48000,2,30.52,0.00951,0.1017,5
 1.1A low walking all that no hole no leak low 1A  mon wav  (1).wav,poiunt a low recordings,unknown,low,A,walk,mon,0,48000,2,30.5,0.0304,0.7048,5
 1.2A low walking all that no hole no leak low 1A  mon wav.wav,poiunt a low recordings,unknown,low,A,walk,mon,0,48000,2,30.66,0.03889,0.5332,5
 2.1A low noise machine  no leak no hole low A 02 mon.wav.wav,poiunt a low recordings,noise,low,A,machine,mon,0,48000,2,30.64,0.04118,0.4762,5
@@ -86,20 +86,20 @@ more distance machine noise.wav,dis machine noise,noise,unknown,unknown,machine,
 3.1A low silence no leak no hole low 3A wav mon .wav,poiunt a low recordings,silence,low,A,quiet,mon,0,48000,2,34.98,0.01389,0.1621,6
 3.2A low silence no leak no hole 3A low mon.wav .wav,poiunt a low recordings,silence,low,A,quiet,mon,0,48000,2,34.86,0.01874,0.2516,6
 4.1A low no leak no hole low  A4 wav mon.wav,poiunt a low recordings,unknown,low,A,unknown,mon,0,48000,2,30.46,0.04943,0.4661,5
-4.2dis machine low no leak no hole A 4 wav mon .wav,poiunt a low recordings,unknown,low,unknown,machine,mon,0,48000,2,30.56,0.04351,0.434,5
+4.2dis machine low no leak no hole A 4 wav mon .wav,poiunt a low recordings,unknown,low,A,machine,mon,0,48000,2,30.56,0.04351,0.434,5
 1.1B high silence. no hole no leak high 1B Mon wav (1).wav,point b high recd,silence,high,B,quiet,mon,0,48000,2,34.92,0.01238,0.2604,6
 1.1B high silence. no hole no leak high 1B Mon wav.wav,point b high recd,silence,high,B,quiet,mon,0,48000,2,34.92,0.01238,0.2604,6
 2.1B machine noice high no hole no leak 2B  high wav Mon .wav,point b high recd,unknown,high,B,machine,mon,0,48000,2,34.44,0.02357,0.3528,6
 2.2B machine noice high no leak no hole high 2B wav Mon .wav,point b high recd,unknown,high,B,machine,mon,0,48000,2,34.5,0.0137,0.1585,6
 3.1B high more dis machine no leak no hole high 3 B wav mon .wav,point b high recd,unknown,high,B,machine,mon,0,48000,1,30.92,0.01094,0.1613,5
 3.2B high dis machine no leak no hole 3B wav mon high .wav,point b high recd,unknown,high,B,machine,mon,0,48000,1,30.8,0.01479,0.2114,5
-4.1 high walking all that no leak no hole B4 high mon wav.wav,point b high recd,unknown,high,unknown,walk,mon,0,48000,1,30.32,0.0057,0.0305,5
-4.2 high walking all that no leak no hole B4 high wav mon.wav,point b high recd,unknown,high,unknown,walk,mon,0,48000,1,30.4,0.00618,0.0434,5
+4.1 high walking all that no leak no hole B4 high mon wav.wav,point b high recd,unknown,high,B,walk,mon,0,48000,1,30.32,0.0057,0.0305,5
+4.2 high walking all that no leak no hole B4 high wav mon.wav,point b high recd,unknown,high,B,walk,mon,0,48000,1,30.4,0.00618,0.0434,5
 1.1 low silence no hole no leak 1B low Mon wav (1).wav,point b low recd,silence,low,B,quiet,mon,0,48000,2,34.62,0.03876,0.2721,6
 1.2B low silence no hole no leak low  1B Mon wav.wav,point b low recd,silence,low,B,quiet,mon,0,48000,2,34.52,0.02146,0.4865,6
 2.1B machine noice low no hole no leak low 2B Mon wav.wav,point b low recd,unknown,low,B,machine,mon,0,48000,2,34.62,0.02377,0.7151,6
 2.2B machine noice low no hole no leak low2B mon wav.wav,point b low recd,unknown,low,B,machine,mon,0,48000,2,34.62,0.02484,0.3439,6
-3.1 B low more dis machine no leak no hole B 3 wav mon .wav,point b low recd,unknown,low,unknown,machine,mon,0,48000,2,30.68,0.05874,0.6176,5
+3.1 B low more dis machine no leak no hole B 3 wav mon .wav,point b low recd,unknown,low,B,machine,mon,0,48000,2,30.68,0.05874,0.6176,5
 3.2B low  dis machine   no leak no hole B 3 Mon wav.   with thak thak and plate rakhna sound .wav,point b low recd,unknown,low,B,machine,mon,0,48000,2,30.48,0.02086,0.2046,5
 4.1B low walking all that no leak no hole low B4 mom wav.wav,point b low recd,unknown,low,B,walk,unknown,0,48000,1,30.44,0.03738,0.4118,5
 4.2B low walking all that no leak no hole B4 low wav mon.wav,point b low recd,unknown,low,B,walk,mon,0,48000,1,30.34,0.023,0.2737,5
@@ -143,11 +143,11 @@ more distance machine noise.wav,dis machine noise,noise,unknown,unknown,machine,
 1.1B high silence taped no leak high 1B Mon wav .wav,point b high recd,silence,high,B,quiet,mon,0,48000,2,34.66,0.0107,0.0487,6
 2.1B  high machine noice no leak taped high 2B Mon wav.wav,point b high recd,unknown,high,B,machine,mon,0,48000,2,34.48,0.00433,0.0428,6
 3.1 B high dis machine taped no leak high 3B Mon wav .wav,point b high recd,unknown,high,B,machine,mon,0,48000,2,34.4,0.00516,0.0616,6
-4.1 B high walking all that taped no leak high 4B Mon wav .wav,point b high recd,unknown,high,B,walk,mon,0,48000,2,35.0,0.00987,0.4344,6
+4.1 B high walking all that taped no leak high 4B Mon wav .wav,point b high recd,unknown,high,B,walk,mon,0,48000,2,35,0.00987,0.4344,6
 1.1B low silence taped no leak low 1B wav Mon  (1).wav,point b low recd,silence,low,B,quiet,mon,0,48000,2,34.86,0.02527,0.7352,6
 2.1B low machine noise taped no leak low 2B Mon wav .wav,point b low recd,noise,low,B,machine,mon,0,48000,2,34.6,0.00711,0.0563,6
 3.1 B low distance machine taped no leak low 3B Mon wav .wav,point b low recd,unknown,low,B,machine,mon,0,48000,2,34.6,0.00562,0.067,6
-4.1 B low walking all that taped no leak low 4 B Mon wav .wav,point b low recd,unknown,low,unknown,walk,mon,0,48000,2,34.76,0.0096,0.143,6
+4.1 B low walking all that taped no leak low 4 B Mon wav .wav,point b low recd,unknown,low,B,walk,mon,0,48000,2,34.76,0.0096,0.143,6
 1.1B med silence no leak taped med 1B Mon wav .wav,point b med recd,silence,med,B,quiet,mon,0,48000,2,34.7,0.04944,0.7764,6
 2.1B med machine noice no leak taped 2B med Mon wav.wav,point b med recd,unknown,med,B,machine,mon,0,48000,2,34.66,0.0048,0.0751,6
 3.1 B med dis machine taped no leak med 3B Mon wav .wav,point b med recd,unknown,med,B,machine,mon,0,48000,2,34.36,0.00729,0.1942,6
@@ -176,3 +176,66 @@ more distance machine noise.wav,dis machine noise,noise,unknown,unknown,machine,
 2.1C med machine noice taped no leak med 2C wav mon.wav,point c med record,unknown,med,C,machine,mon,0,48000,2,34.56,0.08008,0.4361,6
 3.1C med dis machine no leak taped med 3C Mon wav.wav,point c med record,unknown,med,C,machine,mon,0,48000,2,34.38,0.04356,0.2519,6
 4.1C med walking all that taped no leak med 4C Mon wav.wav,point c med record,unknown,med,C,walk,mon,0,48000,2,34.54,0.03726,0.7303,6
+1.1A silence high testing taped no leak 1A high Tues wav.wav,point A high,silence,high,A,quiet,tue,0,48000,1,34.42,0.01292,0.1029,6
+2.1A high testing machine noise 2A high taped no leak Tues wav.wav,point A high,noise,high,A,machine,tue,0,48000,1,34.4,0.01933,0.0914,6
+3.1A high distance machine testing 3A high no taped leak.wav,point A high,unknown,high,A,machine,unknown,0,48000,1,34.24,0.01437,0.0664,6
+4.1A high walking all that testing taped no leak 4A high Tues wav.wav,point A high,unknown,high,A,walk,tue,0,48000,1,34.36,0.01742,0.0992,6
+1.1A silence low testing taped no leak 1A Tues wav.wav,point a low,silence,low,A,quiet,tue,0,48000,1,34.3,0.00571,0.056,6
+2.1A low testing machine noise 2A low taped no leak Tues wav.wav,point a low,noise,low,A,machine,tue,0,48000,1,34.44,0.00837,0.0689,6
+3.1A low distance machine testing taped no leak 3A low Tues wav.wav,point a low,unknown,low,A,machine,tue,0,48000,1,34.4,0.01133,0.3809,6
+4.1A low walking all that testing taped no leak 4A low Tues wav.wav,point a low,unknown,low,A,walk,tue,0,48000,1,34.32,0.00848,0.2266,6
+1.1A silence med testing taped no leak 1A med Tues wav.wav,point a med,silence,med,A,quiet,tue,0,48000,1,34.22,0.02917,0.1996,6
+2.1A med testing machine noise 2A med taped no leak Tues wav.wav,point a med,noise,med,A,machine,tue,0,48000,1,34.46,0.02538,0.1816,6
+3.1A med distance machine testing taped no leak 3A med Tues wav.wav,point a med,unknown,med,A,machine,tue,0,48000,1,34.38,0.03464,0.1828,6
+4.1A med walking all that testing taped no med 4A low Tues wav.wav,point a med,unknown,med,A,walk,tue,0,48000,1,34.4,0.03038,0.3156,6
+1.1B silence high testing taped no leak 1B high Tues wav.wav,point B HIGH NOLEAK,silence,high,B,quiet,tue,0,48000,1,34.36,0.01485,0.0975,6
+2.1B high testing machine noise 2B high taped no leak Tues wav.wav,point B HIGH NOLEAK,noise,high,B,machine,tue,0,48000,1,34.5,0.01888,0.0895,6
+3.1B high distance machine testing 3B high no taped leak.wav,point B HIGH NOLEAK,unknown,high,B,machine,unknown,0,48000,1,34.4,0.01643,0.1005,6
+4.1B high walking all that testing taped no leak high  4B Tues wav.wav,point B HIGH NOLEAK,unknown,high,B,walk,tue,0,48000,1,34.56,0.02394,0.8951,6
+1.1B silence low testing taped no leak 1B low Tues wav.wav,point B LOW NOLEAK TAPED,silence,low,B,quiet,tue,0,48000,1,34.4,0.00303,0.0663,6
+2.1B low testing machine noise 2B low taped no leak Tues wav .wav,point B LOW NOLEAK TAPED,noise,low,B,machine,tue,0,48000,1,34.72,0.02624,0.8702,6
+3.1B lowdistance machine testing taped no leak 3B low Tues wav (1).wav,point B LOW NOLEAK TAPED,unknown,low,B,machine,tue,0,48000,1,34.4,0.00995,0.1931,6
+4.1B med walking all that testing taped no leak med 4B low Tues wav (1).wav,point B LOW NOLEAK TAPED,unknown,med,B,walk,tue,0,48000,1,34.36,0.02341,0.1169,6
+1.1B silence med testing taped no leak 1B med Tues wav.wav,point B med noleak,silence,med,B,quiet,tue,0,48000,1,34.32,0.02809,0.2179,6
+2.1B med testing machine noise 2B med taped no leak Tues wav .wav,point B med noleak,noise,med,B,machine,tue,0,48000,1,34.46,0.02519,0.1602,6
+3.1B med distance machine testing 3B med no taped leak.wav,point B med noleak,unknown,med,B,machine,unknown,0,48000,1,35.16,0.02418,0.4995,6
+4.1B med walking all that testing taped no leak med 4B low Tues wav (1).wav,point B med noleak,unknown,med,B,walk,tue,0,48000,1,34.36,0.02341,0.1169,6
+1.1C silence high testing taped no leak 1C high Tues wav.wav,POINT C HIGH LEAK,silence,high,C,quiet,tue,0,48000,1,34.42,0.02008,0.1113,6
+2.1C high testing machine noise 2C taped no leak Tues wav .wav,POINT C HIGH LEAK,noise,high,C,machine,tue,0,48000,1,34.46,0.02117,0.1074,6
+3.1B lowdistance machine testing taped no leak 3B low Tues wav (2).wav,POINT C HIGH LEAK,unknown,low,B,machine,tue,0,48000,1,34.4,0.00995,0.1931,6
+3.1C high distance machine testing taped no leak 3C Tues wav.wav,POINT C HIGH LEAK,unknown,high,C,machine,tue,0,48000,1,34.52,0.02079,0.1759,6
+1.1C silence med testing taped no leak 1C med Tues wav.wav,point C MED NOLEAK,silence,med,C,quiet,tue,0,48000,1,34.38,0.02958,0.1839,6
+2.1C med testing machine noise 2C med taped no leak Tues wav .wav,point C MED NOLEAK,noise,med,C,machine,tue,0,48000,1,34.56,0.0327,0.1863,6
+3.1C med distance machine testing taped no leak 3C med Tues wav.wav,point C MED NOLEAK,unknown,med,C,machine,tue,0,48000,1,34.46,0.04745,0.2787,6
+4.1C med walking all that testing taped no leak med 4B  Tues wav .wav,point C MED NOLEAK,unknown,med,C,walk,tue,0,48000,1,34.12,0.03021,0.1818,6
+1.1C silence low testing taped no leak 1C low Tues wav.wav,point C low noleak,silence,low,C,quiet,tue,0,48000,1,34.4,0.0031,0.056,6
+2.1C low testing machine noise 2C low taped no leak Tues wav .wav,point C low noleak,noise,low,C,machine,tue,0,48000,1,34.44,0.01906,0.1201,6
+3.1C low distance machine testing taped no leak 3C low Tues wav.wav,point C low noleak,unknown,low,C,machine,tue,0,48000,1,34.64,0.01001,0.089,6
+4.1C low walking all that testing taped no leak low 4B  Tues wav .wav,point C low noleak,unknown,low,C,walk,tue,0,48000,1,34.44,0.00039,0.0064,6
+1.1 C high silence leak 1C Mon wav testing .wav,point c high leak,silence,high,C,quiet,mon,0,48000,2,34.4,0.02538,0.1709,6
+2.1 C high machine noise leak 2C Mon wav test.wav,point c high leak,noise,high,C,machine,mon,0,48000,2,34.4,0.03885,0.4809,6
+4.1 Chigh walking all that leak 4C Mon wav test.wav,point c high leak,unknown,high,C,walk,mon,0,48000,2,34.44,0.03956,0.2184,6
+1. 1 C low silence leak 1C Mon wav testing .wav,point c low leak,silence,low,C,quiet,mon,0,48000,2,34.42,0.01258,0.3699,6
+4.1 C low  walking all that leak 4 C Mon wav test (1).wav,point c low leak,unknown,low,C,walk,mon,0,48000,2,34.38,0.07933,0.7127,6
+4.1 C low  walking all that leak 4 C Mon wav test.wav,point c low leak,unknown,low,C,walk,mon,0,48000,2,34.38,0.07933,0.7127,6
+1.1 C med silence leak 1C Mon wav test  (1).wav,point c medium leak,silence,med,C,quiet,mon,0,48000,2,34.48,0.04088,0.3416,6
+2.1C med machine noise leak 2C Mon wav test  (1).wav,point c medium leak,noise,med,C,machine,mon,0,48000,2,34.52,0.05237,0.3041,6
+4.1 C med walking all that leak 4C Mon wav test   (1).wav,point c medium leak,unknown,med,C,walk,mon,0,48000,2,35.02,0.04485,0.2838,6
+"1.1A,high, silence,testing,,no tape,leak,high,1A Tues wav.wav",point A  highl Leak recordings,silence,high,A,quiet,tue,0,48000,2,34.2,0.0134,0.0943,6
+"2.1A,high, machine noise,testing,,no tape,leak,high,2A Tues wav.wav",point A  highl Leak recordings,noise,high,A,machine,tue,0,48000,2,34.46,0.01384,0.0874,6
+"4.1A,high, walking and all that,testing,4A,no tape,leak,high, Tues wav.wav",point A  highl Leak recordings,unknown,high,A,walk,tue,0,48000,2,34.46,0.01273,0.3806,6
+"1.1A,med, silence,testing,,no tape,leak,med,1A Tues wav.wav",point A med leak recordings,silence,med,A,quiet,tue,0,48000,2,34.14,0.0121,0.0784,6
+"2.1A,med, machine noise,testing,,no tape,leak,med,2A Tues wav.wav",point A med leak recordings,noise,med,A,machine,tue,0,48000,2,34.48,0.01329,0.0828,6
+"4.1A,med, walking and all that,testing,4A,no tape,leak,med, Tues wav.wav",point A med leak recordings,unknown,med,A,walk,tue,0,48000,2,34.52,0.02055,0.1958,6
+"1.1A,low, silence,testing,,no tape,leak,low,1A Tues wav.wav",point a low leak recordings,silence,low,A,quiet,tue,0,48000,2,34.4,0.00504,0.0641,6
+"2.1A,low, machine noise,testing,,no tape,leak,low,2A Tues wav.wav",point a low leak recordings,noise,low,A,machine,tue,0,48000,2,34.5,0.00561,0.0284,6
+"4.1A,low, walking and all that,testing,4A,no tape,leak,low, Tues wav.wav",point a low leak recordings,unknown,low,A,walk,tue,0,48000,2,34.18,0.00743,0.1921,6
+"1.1B,high, silence,testing,,no tape,leak,high,1B, Tues wav.wav",Point b high leak,silence,high,B,quiet,tue,0,48000,2,34.36,0.01637,0.0893,6
+"2.1B,high, machine noise,testing,,no tape,leak,high,2B Tues wav.wav",Point b high leak,noise,high,B,machine,tue,0,48000,2,34.42,0.00856,0.0768,6
+"4.1B,high, walking and all that,testing,,no tape,leak,high,4B, Tues wav.wav",Point b high leak,unknown,high,B,walk,tue,0,48000,2,35.04,0.01728,0.7667,6
+"1.1B,med, silence,testing,,no tape,leak,med,1B, Tues wav.wav",Point b medium leal,silence,med,B,quiet,tue,0,48000,2,34.38,0.02469,0.1577,6
+"2.1B,med, machine noise,testing,,no tape,leak,med,2B, Tues wav (3).wav",Point b medium leal,noise,med,B,machine,tue,0,48000,2,34.42,0.02713,0.5,6
+"4.1B,med, walking and all that,testing,,no tape,leak,med,4B, Tues wav.wav",Point b medium leal,unknown,med,B,walk,tue,0,48000,2,34.28,0.01248,0.3191,6
+"1.1B,silence,low, testing,no taped,leak,1B,tues wav (3).wav",point B LOW LEAK RECORDINGS,silence,low,B,quiet,tue,0,48000,2,34.36,0.00504,0.1818,6
+"2.1B,low, machine noise,testing,,no tape,leak,low,2B, Tues wav.wav",point B LOW LEAK RECORDINGS,noise,low,B,machine,tue,0,48000,2,34.42,0.0084,0.4173,6
+"4.1B,low, walking and all that,testing,no tape,leak,high4B, Tues wav (3).wav",point B LOW LEAK RECORDINGS,unknown,high,B,walk,tue,0,48000,2,34.4,0.00711,0.0911,6

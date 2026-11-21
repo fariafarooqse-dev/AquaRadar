@@ -1,15 +1,30 @@
-AquaRadar local model report  (2026-11-20)
-Files per class: leak=36, leak_high_nowater=19, noise=8, noleak_nohole=71, noleak_taped=36, silence=5
+AquaRadar local model report  (2026-11-21)
+--drop-suspect: left out 6 doubtful leak files (listed in SUSPECT_FILES).
+Files per class: leak=45, leak_high_nowater=28, leak_unsure=6, noise=8, noleak_nohole=71, noleak_taped=68, silence=5
 
-Grouped 5-fold CV (a recording is never split between train and test):
-balanced accuracy (windows): 0.970 | file-level accuracy: 0.986 (143 files)
-Confusion matrix [rows true noleak,leak; cols predicted]: [[599, 8], [10, 206]]
+TRAIN on 823 windows from 143 files; TEST on 240 windows from 40 files (root contains 'tuesday').
+(1 test files were exact copies of another test file and were dropped.)
+Test files per class: leak=9, noleak_taped=31
+TEST balanced accuracy (windows): 0.727 | file-level accuracy: 0.650 (40 files)
+Confusion matrix [rows true noleak,leak; cols predicted]: [[105, 81], [6, 48]]
+Wrongly classified test files: 14
+   noleak_taped   leak-prob 1.00  1.1A silence high testing taped no leak 1A high Tues wav.wav
+   noleak_taped   leak-prob 0.67  1.1A silence low testing taped no leak 1A Tues wav.wav
+   noleak_taped   leak-prob 1.00  1.1A silence med testing taped no leak 1A med Tues wav.wav
+   noleak_taped   leak-prob 1.00  1.1C silence low testing taped no leak 1C low Tues wav.wav
+   noleak_taped   leak-prob 0.67  1.1C silence med testing taped no leak 1C med Tues wav.wav
+   noleak_taped   leak-prob 1.00  2.1A high testing machine noise 2A high taped no leak Tues wav.wav
+   noleak_taped   leak-prob 1.00  2.1A med testing machine noise 2A med taped no leak Tues wav.wav
+   noleak_taped   leak-prob 1.00  3.1A med distance machine testing taped no leak 3A med Tues wav.wav
+   noleak_taped   leak-prob 1.00  3.1C high distance machine testing taped no leak 3C Tues wav.wav
+   noleak_taped   leak-prob 0.50  3.1C low distance machine testing taped no leak 3C low Tues wav.wav
+   noleak_taped   leak-prob 0.83  3.1C med distance machine testing taped no leak 3C med Tues wav.wav
+   noleak_taped   leak-prob 1.00  4.1A high walking all that testing taped no leak 4A high Tues wav.wav
+   noleak_taped   leak-prob 1.00  4.1A low walking all that testing taped no leak 4A low Tues wav.wav
+   noleak_taped   leak-prob 1.00  4.1A med walking all that testing taped no med 4A low Tues wav.wav
+Not in the score, model trained on non-test files says LEAK for 61% of the 54 windows (9 files): leak_high_nowater
+Not in the score, model trained on non-test files says LEAK for 11% of the 36 windows (6 files): leak_unsure
 
-Leave one piezo point out:
-  hold out A: balanced accuracy 0.958 (276 windows)
-  hold out B: balanced accuracy 0.957 (288 windows)
-  hold out C: balanced accuracy 0.985 (259 windows)
-
-Hole open + high flow ('no water') windows predicted LEAK: 98% (114 windows).
+Hole open + high flow ('no water') windows predicted LEAK: 96% (168 windows).
 
 NOT proven: other pipes/buildings, leak size, long-term stability. Pilot data from one rig.

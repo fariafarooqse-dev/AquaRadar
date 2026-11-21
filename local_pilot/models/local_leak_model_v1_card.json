@@ -1,5 +1,5 @@
 {
-  "trained": "2026-11-20",
+  "trained": "2026-11-21",
   "classes": {
     "0": "noleak",
     "1": "leak"
@@ -40,14 +40,15 @@
   "window_s": 5,
   "trim_s": 1,
   "model": "StandardScaler + LogisticRegression",
-  "cv": {
-    "bal_acc": 0.97,
-    "file_acc": 0.986,
-    "files": 143
+  "test": {
+    "root": "tuesday",
+    "bal_acc": 0.727,
+    "file_acc": 0.65,
+    "files": 40
   },
   "train_files": {
-    "leak": 36,
+    "leak": 45,
     "noleak_nohole": 71,
-    "noleak_taped": 36
+    "noleak_taped": 68
   }
 }
